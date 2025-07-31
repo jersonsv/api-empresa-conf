@@ -121,4 +121,4 @@ Las contribuciones son bienvenidas. Por favor, crea un fork del proyecto y enví
 Este proyecto está bajo la Licencia MIT.
 
 ## 👨‍💻 Autor
-**Tu Nombre** - [Tu GitHub](https://github.com/tu-usuario)
+**Jerson Salvador** - https://github.com/jersonsv
