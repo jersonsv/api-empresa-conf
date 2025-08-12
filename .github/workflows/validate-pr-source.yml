@@ -1,0 +1,34 @@
+name: Validate PR Source
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate-source:
+    runs-on: ubuntu-latest
+    name: Validate PR comes from develop
+    steps:
+    - name: Check PR source branch
+      run: |
+        echo "🔍 Checking PR source branch..."
+        echo "Source branch: ${{ github.head_ref }}"
+        echo "Target branch: ${{ github.base_ref }}"
+        
+        if [ "${{ github.head_ref }}" != "develop" ]; then
+          echo ""
+          echo "❌ ERROR: Pull requests to main branch must come from develop branch only!"
+          echo "❌ Current source branch: ${{ github.head_ref }}"
+          echo "❌ Expected source branch: develop"
+          echo ""
+          echo "🔄 Please:"
+          echo "1. Close this PR"
+          echo "2. Merge your changes to develop first"
+          echo "3. Create a new PR from develop to main"
+          exit 1
+        else
+          echo ""
+          echo "✅ SUCCESS: Pull request source validated!"
+          echo "✅ develop → main is allowed"
+          echo ""
+        fi
